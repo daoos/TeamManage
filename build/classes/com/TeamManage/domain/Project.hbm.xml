@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.TeamManage.domain">
+	<class name="Project"  table="project">
+		<id name="projectId" type="int">
+			<generator class="native"/>
+		</id>
+	<property name="projectName" type="string">
+	<column name="projectName" />
+		</property>
+	<property name="projectType" type="string">
+	<column name="projectType" />
+	</property>
+	<property name="projectBrief" type="string">
+	<column name="projectBrief" />
+	</property>
+		<property name="createTime" type="timestamp">
+	<column name="createTime" />
+	</property>
+		<property name="adminId" type="int">
+	<column name="adminId" />
+	</property>
+	<property name="state" type="string" >
+	<column name="state" />
+	</property>
+		<property name="ownershipType" type="string" >
+	<column name="ownershipType" />
+	</property>
+	<!-- 对于笔记一对多 -->
+     <set name="noteSet" inverse="false" cascade="save-update" table="note">
+         <key column="projectId"></key>
+          <one-to-many class="com.TeamManage.domain.Note"/>
+     </set>
+     
+     <!-- 对于任务是一对多 -->
+      <set name="taskSet" inverse="false" cascade="save-update" table="task">
+         <key column="projectId"></key>
+         <one-to-many class="com.TeamManage.domain.Task"/>
+     </set>
+      
+      <!-- 对于行程是一对多 -->
+        <set name="scheduleSet" inverse="false" cascade="save-update" table="schedule">
+         <key column="projectId"></key>
+         <one-to-many class="com.TeamManage.domain.Schedule"/>
+     </set>
+     
+      <!-- 对于资源是一对多 -->
+        <set name="resourceSet" inverse="false" cascade="save-update" table="resource">
+         <key column="projectId"></key>
+         <one-to-many class="com.TeamManage.domain.Resource"/>
+     </set>
+     
+     <!-- 成员是多对多 -->
+      <set name="memberSet" table="project_member"  lazy="false">  
+            <key column="projectId" />  
+            <many-to-many column="memberId" class="com.TeamManage.domain.Member" />  
+        </set>  
+      
+      
+	</class>
+</hibernate-mapping>

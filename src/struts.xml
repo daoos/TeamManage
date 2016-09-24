@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<!-- 定义自己的拦截器 -->
+			<interceptor name="loginInterceptor"
+				class="com.TeamManage.action.loginAction.LoginInterceptor">
+			</interceptor>
+			<!-- 声明拦截器栈 -->
+			<interceptor-stack name="loginInterceptor">
+				<!-- 引用自定义的拦截器，说明struts的拦截器都是拦截器栈中！ -->
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<!-- 引用struts2内部的拦截器栈 -->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<action name="IndexPage">
+			<result>memberlogin/login.jsp</result><!-- 要根据是否打勾了记住密码方式 -->
+			<interceptor-ref name="loginInterceptor"></interceptor-ref> 
+		</action>
+		 <!-- <action name="jsontest" class="JsonJQueryStruts2Action">
+            返回List对象,类型指定为json自动转换
+            <result name="userList" type="json">
+            
+            excludeProperties表示不包含的属性（可以使用正则表达式匹配）,剩下的属性将被序列化  
+                <param name="excludeProperties">  
+                    address,uuid
+                </param>  
+                includeProperties表示包含序列化的属性（可以使用正则表达式匹配），没写的不会被序列化,这里要写list.*，否则前台不能获取到  
+                <param name="includeProperties">  
+                    list.*
+                </param> 
+                
+            </result>
+        </action> -->
+		<action name="login" class="com.TeamManage.action.loginAction.LoginAction">
+			<result name="success">dashboard.jsp</result>
+			<result name="error" type="redirect">IndexPage</result>
+
+		</action>
+		<action name="loginOut" class="com.TeamManage.action.loginAction.LoginOutAction">
+			<result name="success" type="redirect">IndexPage</result>
+			<result name="error" type="redirect">IndexPage</result>
+		</action>
+		<action name="memberIndex" method="updateMemberIndex"
+			class="com.TeamManage.action.MemberAction.MemberAction">
+			<result name="success">memberlogin/updateMember.jsp</result>
+			<result name="error">dashboard.jsp</result>
+		</action>
+		<action name="memberUpdate" method="updateMember"
+			class="com.TeamManage.action.MemberAction.MemberAction">
+			<result name="success">dashboard.jsp</result>
+			<result name="error">memberlogin/updateMember.jsp</result>
+		</action>
+		<action name="regist" method="regist"
+			class="com.TeamManage.action.loginAction.RegistAction">
+			<result name="success" type="redirect">IndexPage</result>
+			<result name="error">register.jsp</result>
+		</action>
+		<!-- email检查ajax -->
+		<!-- <action name="emailCheck" class="emailCheckAction" > </action> -->
+	</package>
+	<include file="project.xml"></include>
+	<include file="resource.xml"></include>
+	<include file="schedule.xml"></include>
+	<include file="task.xml"></include>
+	<include file="note.xml"></include>
+	<include file="test.xml"></include>
+</struts>

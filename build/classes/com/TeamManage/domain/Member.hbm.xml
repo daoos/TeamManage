@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.TeamManage.domain">
+	<class name="Member"  table="member">
+		<id name="memberId" type="int">
+			<generator class="native"/>
+		</id>
+	<property name="name" type="string">
+	<column name="name" />
+		</property>
+	<property name="password" type="string">
+	<column name="password" />
+	</property>
+		<property name="emailAddress" type="string">
+	<column name="emailAddress" />
+	</property>
+	
+	<property name="relateMemberId" type="string">
+	<column name="relateMemberId" />
+	</property>
+	
+	  <set name="projectSet" table="project_member" lazy="false">  
+            <key column="memberId" />  
+            <many-to-many column="projectId" class="com.TeamManage.domain.Project" />  
+        </set> 
+        
+       <set name="noteSet" lazy="false"  cascade="save-update" table="note">
+         <key column="memberId"></key>
+        <one-to-many class="com.TeamManage.domain.Note"/>
+      </set>
+      <set name="scheduleSet" lazy="false"  cascade="save-update" table="schedule">
+         <key column="scheduleId"></key>
+        <one-to-many class="com.TeamManage.domain.Schedule"/>
+      </set>
+    
+	</class>
+</hibernate-mapping>

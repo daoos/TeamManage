@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="task" namespace="/"  extends="struts-default">
+
+		<action name="AddTaskIndex"
+			class="com.TeamManage.action.TaskAction.AddTaskIndexAction">
+			<result name="success">/addTaskIndex.jsp</result>
+			<result name="error">/addTaskIndex.jsp</result>
+		</action>
+
+		<action name="AddTask" class="com.TeamManage.action.TaskAction.AddTaskAction">
+			<result name="success" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+
+		<action name="MarkTaskDoing"
+			class="com.TeamManage.action.TaskAction.MarkTaskDoingAction">
+			<result name="success" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+
+		<action name="MarkTaskComplete"
+			class="com.TeamManage.action.TaskAction.MarkTaskCompleteAction">
+			<result name="success" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+
+		<action name="MarkTaskNotComplete"
+			class="com.TeamManage.action.TaskAction.MarkTaskNotCompleteAction">
+			<result name="success" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+
+		<!-- 删除任务 -->
+		<action name="DeleteTask"
+			class="com.TeamManage.action.TaskAction.DeleteTaskAction">
+			<result name="success" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">SeeProjectIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.TeamManage.domain">
+	<class name="Task"  table="task">
+		<id name="taskId" type="int">
+			<generator class="native"/>
+		</id>
+	<property name="taskName" type="string">
+	<column name="taskName" />
+		</property>
+	<property name="taskContent" type="string">
+	<column name="taskContent" />
+	</property>
+		<property name="deadline" type="timestamp">
+	<column name="deadline" />
+	</property>
+		<property name="priority" type="string">
+	<column name="priority" />
+	</property>
+	<many-to-one name="member" column="memberId" class="Member" lazy="false" />
+	
+	<property name="state" type="string" >
+	<column name="state" />
+	</property>
+	
+    <many-to-one name="project" column="projectId" lazy="false" ></many-to-one>
+    
+	</class>
+</hibernate-mapping>

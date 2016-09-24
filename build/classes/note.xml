@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="note" extends="struts-default">
+		<!--分享 -->
+		<action name="noteIndex" method="seeNote" class="com.TeamManage.action.NoteAction.NoteIndexAction">
+			<result name="success">note/noteIndex.jsp</result>
+			<result name="error">note/noteIndex.jsp</result>
+		</action>
+		<!-- 查看笔记详细 -->
+		<action name="SeeNote" method="seeOneNote" class="com.TeamManage.action.NoteAction.NoteIndexAction">
+			<result name="success">note/seeNoteIndex.jsp</result>
+			<result name="error">note/seeNoteIndex.jsp</result>
+		</action>
+		<!--添加笔记Index -->
+		<action name="AddNoteIndex"
+
+			class="com.TeamManage.action.NoteAction.AddNoteIndexAction"><!--不做任何操作 -->
+			<result name="success">note/addNoteIndex.jsp</result>
+			<result name="error">note/addNoteIndex.jsp</result>
+		</action>
+		<!-- 添加笔记 -->
+		<action name="AddNote" method="createNote" class="com.TeamManage.action.NoteAction.NoteIndexAction">
+			<result name="success" type="redirect">noteIndex</result>
+			<result name="error" type="redirect">
+				<param name="location">noteIndex</param>
+				<param name="projectId">${projectId}</param><!-- 设置默认值 -->
+			</result>
+		</action>
+		<!-- 删除笔记 -->
+		<action name="DeleteNote"
+			class="com.TeamManage.action.NoteAction.NoteIndexAction">
+			<result name="success" type="redirect">
+				<param name="location">noteIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">noteIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

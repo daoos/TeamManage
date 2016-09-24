@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="resource" extends="struts-default">
+
+		<action name="ResourceIndex"
+			class="com.TeamManage.action.ResourceAction.ResourceIndexAction">
+			<result name="success">projectResource/ResourceIndex.jsp</result>
+			<result name="error">projectResource/ResourceIndex.jsp</result>
+		</action>
+		<!-- 上传文件 -->
+		<action name="AddResourceIndex"
+			class="com.TeamManage.action.ResourceAction.AddResourceAction">
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="basicStack" />
+			<result name="success" type="redirect">
+				<param name="location">ResourceIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+
+		<!-- 下载文件 -->
+		<action name="DownloadResource"
+			class="com.TeamManage.action.ResourceAction.DownloadResourceAction">
+			<result type="stream">
+				<param name="contentDisposition">attachment;fileName="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">50000000</param>
+			</result>
+		</action>
+
+		<!-- 删除文件 -->
+		<action name="DeleteResource"
+			class="com.TeamManage.action.ResourceAction.DeleteResourceAction">
+			<result name="success" type="redirect">
+				<param name="location">ResourceIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">ResourceIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+	</package>
+</struts>

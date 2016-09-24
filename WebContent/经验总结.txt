@@ -1,0 +1,15 @@
+<a>这个标签的href=DeleteProject?projectId=<s:property value="projectId"/>
+设置username和member为静态成员，让整个网站都可以访问，这是有个超类baseAction,不使用 ctx.getSession()
+没有set跟个get是不能有获得url，或者post的数据
+用，隔开表示自己关联的人
+
+
+不足之处：
+如果2是1的成员，那么2也就拥有1的成员的project记录，而且还是创建时的项目，其他没有加入的并不算
+
+<s:iterator value="memberList">
+										<option value=<s:property value="memberId"/>><s:property
+												value="name" /></option>
+									</s:iterator>
+									
+Action代码尽量不要写太多，由于需要修改，不要太过臃肿

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.TeamManage.domain">
+	<class name="Resource" table="resource">
+		<id name="resourceId" type="int">
+			<generator class="native" />
+		</id>
+		<property name="fileName" type="string">
+			<column name="fileName" />
+		</property>
+		<property name="uploadTime" type="timestamp">
+		<column name="uploadtime"></column>
+		</property>
+		<property name="fileBytes" column="fileBytes" type="binary" />
+		 <many-to-one name="member" column="memberId" lazy="false" fetch="select" ></many-to-one>
+			 <many-to-one name="project" column="projectId" lazy="false" fetch="select" ></many-to-one>
+	</class>
+</hibernate-mapping>

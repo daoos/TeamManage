@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="project" extends="struts-default">
+
+		<action name="AddProjectIndex"
+			class="com.TeamManage.action.projectAction.AddProjectIndexAction">
+			<result name="success">project/addProject.jsp</result>
+			<result name="error">project/addProject.jsp</result>
+		</action>
+		<action name="UpdateProjectIndex"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">project/updateProject.jsp</result>
+			<result name="message">notfound.jsp</result>
+		</action>
+		<action name="DeleteProjectIndex"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/project/deleteProject.jsp</result>
+			<result name="error">/project/deleteProject.jsp</result>
+		</action>
+			<action name="updateProjectIndex" method="updateProjectIndex"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/project/updateProject.jsp</result>
+			<result name="error">/project/seeProject.jsp</result>
+		</action>
+		<!-- 居然也是和 DeleteProjectIndex执行相同的查询 -->
+		<action name="SeeProject" method="seeProject"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/project/seeProject.jsp</result>
+			<result name="error">/project/seeProject.jsp</result>
+		</action>
+		<action name="UpdateProject" method="updateProject"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/dashboard.jsp</result>
+			<result name="message">/dashboard.jsp</result>
+		</action>
+		<action name="DeleteProject" method="deleteProject"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/dashboard.jsp</result>
+			<result name="error">/forms.jsp</result><!-- 没有删除成功的 -->
+		</action>
+		<action name="AddProject" method="addProject"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/dashboard.jsp</result>
+			<result name="error">/notfound.jsp</result>
+		</action>
+		<action name="UpdateProjectIndex" method="addProject"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/dashboard.jsp</result>
+			<result name="error">/notfound.jsp</result>
+		</action>
+
+
+
+	</package>
+</struts>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="project" extends="struts-default">
+	
+		<action name="AddProjectIndex"
+			class="com.TeamManage.action.projectAction.AddProjectIndexAction">
+			<result name="success">forms.jsp</result>
+			<result name="error">forms.jsp</result>
+		</action>
+
+		<action name="AddProject"
+			class="com.TeamManage.action.projectAction.AddProjectAction">
+			<result name="success">/dashboard.jsp</result>
+			<result name="error">/notfound.jsp</result>
+		</action>
+
+		<action name="UpdateProjectIndex"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/updateProjectIndex.jsp</result>
+			<result name="message">/updateProjectIndex.jsp</result>
+		</action>
+		<!-- 更新项目内容编辑页面 -->
+		<action name="updateProjectContent"
+			class="com.TeamManage.action.projectAction.UpdateProjectContentAction">
+			<result>/updateProject.jsp</result>
+			<result>/updateProject.jsp</result>
+		</action>
+
+		<action name="UpdateProject"
+			class="com.TeamManage.action.projectAction.UpdateProjectAction">
+			<result name="success">/dashboard.jsp</result>
+			<result name="message">/dashboard.jsp</result>
+		</action>
+
+		<action name="DeleteProject"
+			class="com.TeamManage.action.projectAction.DeleteProjectAction">
+			<result name="success">/dashboard.jsp</result>
+			<result name="error">/forms.jsp</result><!-- 没有删除成功的 -->
+		</action>
+
+		<action name="DeleteProjectIndex"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/deleteProject.jsp</result>
+			<result name="error">/deleteProject.jsp</result>
+		</action>
+		<!-- 居然也是和 DeleteProjectIndex执行相同的查询 -->
+		<action name="MyProjectIndex"
+			class="com.TeamManage.action.projectAction.UpdateProjectIndexAction">
+			<result name="success">/seeProject.jsp</result>
+			<result name="error">/seeProject.jsp</result>
+		</action>
+
+		<!--查看具体的项目 -->
+		<action name="SeeTask" class="com.TeamManage.action.projectAction.SeeTaskIndex">
+			<result name="success">/seeTask.jsp</result>
+			<result name="error">/seeTask.jsp</result>
+		</action>
+	</package>
+</struts>

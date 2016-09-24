@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="shcedule" extends="struts-default">
+		<!-- 添加日程 -->
+		<action name="ScheduleIndex" class="com.TeamManage.action.ScheduleAction.ScheduleIndexAction">
+			<result name="success">/scheduleIndex.jsp</result>
+			<result name="error">/scheduleIndex.jsp</result>
+		</action>
+		<!--添加日程Index -->
+		<action name="AddScheduleIndex"
+			class="com.TeamManage.action.ScheduleAction.AddScheduleIndexAction">
+			<result name="success">/addScheduleIndex.jsp</result>
+			<result name="error">/addScheduleIndex.jsp</result>
+		</action>
+		<!--添加日程 -->
+		<action name="AddSchedule"
+			class="com.TeamManage.action.ScheduleAction.AddScheduleAction">
+			<result name="success" type="redirect">
+				<param name="location">ScheduleIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">ScheduleIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+		<!-- 删除日程 -->
+		<action name="DeleteSchedule"
+			class="com.TeamManage.action.ScheduleAction.DeleteScheduleAction">
+			<result name="success" type="redirect">
+				<param name="location">ScheduleIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">ScheduleIndex</param>
+				<param name="projectId">${projectId}</param>
+			</result>
+		</action>
+		<!-- 查看日程详细 -->
+		<action name="SeeSchedule"
+			class="com.TeamManage.action.ScheduleAction.SeeScheduleAction">
+			<result name="success">/seeSchedule.jsp</result>
+			<result name="error">/seeSchedule.jsp</result>
+		</action>
+
+	</package>
+</struts>
